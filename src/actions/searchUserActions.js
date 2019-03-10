@@ -26,3 +26,7 @@ export const searchUser = (query) => {
   };
 };
 
+export const selectUser = (username) => ({
+  type: SEARCH_USER_CONSTANTS.SELECT_USER,
+  username,
+})
