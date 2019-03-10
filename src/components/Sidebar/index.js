@@ -4,24 +4,35 @@ import Search from '../Search';
 import UsersList from '../UsersList';
 import UsersListPlaceholder from '../UsersListPlaceholder';
 
-const Sidebar = (props) => (
+const Sidebar = ({
+  users,
+  searchQuery,
+  searchStarted,
+  onSearchQueryChange,
+  onUserClick
+}) => (
   <aside>
     <Search
-      query={props.searchQuery}
-      onQueryChange={props.onSearchQueryChange}
+      query={searchQuery}
+      onQueryChange={onSearchQueryChange}
     />
-    {props.users.length > 0 ? (
-      <UsersList users={[]} />
-    ) : (
+    {users.length > 0 ? (
+      <UsersList
+        users={users}
+        onUserClick={onUserClick}
+      />
+    ) : searchStarted && searchQuery.length > 0 ? (
       <UsersListPlaceholder />
-    )}
+    ) : null }
   </aside>
 );
 
 Sidebar.propTypes = {
   users: PropTypes.array.isRequired,
   searchQuery: PropTypes.string,
+  searchStarted: PropTypes.bool,
   onSearchQueryChange: PropTypes.func.isRequired,
+  onUserClick: PropTypes.func.isRequired,
 };
 
 export default Sidebar;
