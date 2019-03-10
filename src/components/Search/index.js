@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Input } from 'reactstrap';
 
 const Search = ({ query, onQueryChange }) => (
-  <Form>
+  <Form className="search">
     <Input
       type="text"
       placeholder="Search users"

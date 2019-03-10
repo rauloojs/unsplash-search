@@ -6,12 +6,13 @@ import UsersListPlaceholder from '../UsersListPlaceholder';
 
 const Sidebar = ({
   users,
+  currentUser,
   searchQuery,
   searchStarted,
   onSearchQueryChange,
   onUserClick
 }) => (
-  <aside>
+  <aside className="sidebar">
     <Search
       query={searchQuery}
       onQueryChange={onSearchQueryChange}
@@ -19,6 +20,7 @@ const Sidebar = ({
     {users.length > 0 ? (
       <UsersList
         users={users}
+        currentUser={currentUser}
         onUserClick={onUserClick}
       />
     ) : searchStarted && searchQuery.length > 0 ? (
@@ -29,6 +31,7 @@ const Sidebar = ({
 
 Sidebar.propTypes = {
   users: PropTypes.array.isRequired,
+  currentUser: PropTypes.string,
   searchQuery: PropTypes.string,
   searchStarted: PropTypes.bool,
   onSearchQueryChange: PropTypes.func.isRequired,

@@ -4,7 +4,7 @@ import { Row, Col } from 'reactstrap';
 import Photo from '../Photo';
 
 const PhotoGrid = ({ photos }) => (
-  <section>
+  <section className="photo-grid">
     <Row>
       {photos.map((photo) => (
         <Col sm="4" key={photo.id}>
