@@ -24,7 +24,7 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <Row>
+        <Row className="w-100">
           <Col sm="4">
             <Sidebar
               users={this.props.searchUserResults}
@@ -36,6 +36,11 @@ class App extends Component {
             />
           </Col>
           <Col sm="8">
+          {/*
+            TODO: Add a loader using Loader component
+            photosLoading should be passed as prop to decide when the loader should appear
+            I was planning to use loaders.css for this chore
+          */}
             {this.props.photosResults.length > 0 ? (
               <PhotoGrid photos={this.props.photosResults} />
             ) : this.props.photosStarted && this.props.currentUser ? (
@@ -49,19 +54,27 @@ class App extends Component {
   }
 }
 
+// TODO: Add default props to stateless components
+App.defaultProps = {
+  searchUserQuery: '',
+  searchUserStarted: false,
+  searchUserLoading: false,
+  searchUserResults: [],
+  currentUser: null,
+  photosStarted: false,
+  photosLoading: false,
+  photosResults: [],
+};
+
 App.propTypes = {
   searchUserQuery: PropTypes.string,
   searchUserStarted: PropTypes.bool,
   searchUserLoading: PropTypes.bool,
-  searchUserTotal: PropTypes.number,
-  searchUserTotalPages: PropTypes.number,
   searchUserResults: PropTypes.array,
   currentUser: PropTypes.string,
   searchUserActions: PropTypes.object.isRequired,
   photosStarted: PropTypes.bool,
   photosLoading: PropTypes.bool,
-  photosTotal: PropTypes.number,
-  photosTotalPages: PropTypes.number,
   photosResults: PropTypes.array,
   photosActions: PropTypes.object.isRequired,
 };
