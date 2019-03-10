@@ -4,13 +4,11 @@ import { Row, Col } from 'reactstrap';
 import Sidebar from '../../components/Sidebar';
 import PhotoGrid from '../../components/PhotoGrid';
 import Footer from '../../components/Footer';
-import { setPhotos } from '../../actions/photosActions';
 import PhotoGridPlaceholder from '../../components/PhotoGridPlaceholder';
 
+import './styles.css';
+
 class App extends Component {
-  componentDidMount () {
-    this.props.dispatch(setPhotos());
-  }
 
   handleSearch = (event) => {
     const { value } = event.target;
@@ -19,7 +17,8 @@ class App extends Component {
   }
 
   handleUserClick = (user) => {
-    console.log(user);
+    this.props.searchUserActions.selectUser(user.username);
+    this.props.photosActions.getUserPhotos();
   }
 
   render () {
@@ -29,6 +28,7 @@ class App extends Component {
           <Col sm="4">
             <Sidebar
               users={this.props.searchUserResults}
+              currentUser={this.props.currentUser}
               searchQuery={this.props.searchUserQuery}
               searchStarted={this.props.searchUserStarted}
               onSearchQueryChange={this.handleSearch}
@@ -36,11 +36,11 @@ class App extends Component {
             />
           </Col>
           <Col sm="8">
-            {this.props.photos.length > 0 ? (
-              <PhotoGrid photos={this.props.photos} />
-            ) : (
+            {this.props.photosResults.length > 0 ? (
+              <PhotoGrid photos={this.props.photosResults} />
+            ) : this.props.photosStarted && this.props.currentUser ? (
               <PhotoGridPlaceholder />
-            )}
+            ) : null }
           </Col>
         </Row>
         <Footer />
@@ -56,7 +56,14 @@ App.propTypes = {
   searchUserTotal: PropTypes.number,
   searchUserTotalPages: PropTypes.number,
   searchUserResults: PropTypes.array,
+  currentUser: PropTypes.string,
   searchUserActions: PropTypes.object.isRequired,
+  photosStarted: PropTypes.bool,
+  photosLoading: PropTypes.bool,
+  photosTotal: PropTypes.number,
+  photosTotalPages: PropTypes.number,
+  photosResults: PropTypes.array,
+  photosActions: PropTypes.object.isRequired,
 };
 
 export default App;

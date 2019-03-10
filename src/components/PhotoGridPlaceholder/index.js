@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PhotoGridPlaceholder = (props) => (
-  <div>
+  <div className="photo-grid">
     There are no photos results
   </div>
 );
