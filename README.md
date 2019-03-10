@@ -1,6 +1,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+**Note:**
+Added some TODO comments to show some ideas that could be implemented to improve UI.
+
 
 ## Folder structure
 
