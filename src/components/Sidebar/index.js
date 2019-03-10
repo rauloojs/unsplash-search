@@ -17,6 +17,10 @@ const Sidebar = ({
       query={searchQuery}
       onQueryChange={onSearchQueryChange}
     />
+    {/*
+      TODO: Add a loader using Loader component
+      searchUserLoading should be passed as prop to decide when the loader should appear
+    */}
     {users.length > 0 ? (
       <UsersList
         users={users}

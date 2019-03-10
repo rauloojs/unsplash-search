@@ -23,6 +23,8 @@ export const searchUser = (query) => {
         ...response,
       }
     }
+
+    // TODO: Handle error case and show message with ErrorMessage component
   };
 };
 

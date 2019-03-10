@@ -1,6 +1,10 @@
 import * as PHOTOS_CONSTANTS from '../constants/photosConstants';
 import unsplashService from '../services/unsplashService';
 
+/*
+  TODO: Add actions to handle infinite scroll to fetch more photos
+  total and total_pages should be added to state to keep track of available items to fetch
+*/
 export const getUserPhotos = () => {
   return (dispatch, getState) => {
     dispatch(request());
@@ -24,5 +28,7 @@ export const getUserPhotos = () => {
         results,
       }
     }
+
+    // TODO: Handle error case and show message with ErrorMessage component
   };
 };

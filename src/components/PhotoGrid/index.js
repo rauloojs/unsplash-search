@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import Photo from '../Photo';
 
+/*
+  TODO: use react-infinite-scroller to fetch more photos when user scrolls to bottom
+*/
 const PhotoGrid = ({ photos }) => (
   <section className="photo-grid">
     <Row>
