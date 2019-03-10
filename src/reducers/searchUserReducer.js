@@ -7,6 +7,7 @@ const initialState = {
   totalPages: null,
   results: [],
   loading: false,
+  currentUser: null,
 };
 
 function photosReducer(state = initialState, action) {
@@ -25,6 +26,11 @@ function photosReducer(state = initialState, action) {
         totalPages: action.total_pages,
         results: action.results,
         loading: false,
+      };
+    case SEARCH_USER_CONSTANTS.SELECT_USER:
+      return {
+        ...state,
+        currentUser: action.username,
       };
     default:
      return state;
