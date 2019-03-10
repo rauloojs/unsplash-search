@@ -8,9 +8,14 @@ const unsplash = new Unsplash({
 const search = (query) => (
   unsplash.search.photos('cats')
   .then((response) => response.json())
-);
+  );
 
+const searchUser = (query) => (
+  unsplash.search.users(query)
+  .then((response) => response.json())
+);
 
 export default {
   search,
+  searchUser,
 };
