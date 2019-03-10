@@ -5,17 +5,17 @@ const unsplash = new Unsplash({
   secret: process.env.REACT_APP_UNSPLASH_SECRET,
 });
 
-const search = (query) => (
-  unsplash.search.photos('cats')
-  .then((response) => response.json())
-  );
-
 const searchUser = (query) => (
   unsplash.search.users(query)
-  .then((response) => response.json())
+    .then((response) => response.json())
 );
 
+const getUserPhotos = (username) => (
+  unsplash.users.photos(username)
+    .then((response) => response.json())
+)
+
 export default {
-  search,
   searchUser,
+  getUserPhotos,
 };
